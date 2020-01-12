@@ -1,0 +1,56 @@
+@mixin clear() {
+  &:before, &:after {
+      content: "\0020";
+      display: block;
+      height: 0;
+      overflow: hidden;
+  }
+  &:after {
+      clear: both;
+  }
+}
+
+// Offscreen Text
+@mixin linkTextOffscreen() {
+  text-indent: -9999px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  font-size: 0;
+  text-align: start;
+}
+
+// :hover, :active, :focus styles
+@mixin hoverActiveFocus($property, $value) {
+  &:hover, &:active, &:focus {
+      #{$property}: $value;
+  }
+}
+
+// Media query breakpoints
+@mixin breakpoint($point) {
+  @if $point == mobileportrait {
+    @media only screen and (min-width: 320px) { @content; }
+  } 
+  @if $point == mobilelandscape {
+    @media only screen and (min-width: 500px) { @content; }
+  } 
+  @else if $point == tabletmid {
+    @media only screen and (min-width: 650px) { @content; }
+  }
+  @else if $point == tabletportrait {
+    @media only screen and (min-width: 768px) { @content; }
+  }
+  @else if $point == tabletmidlandscape {
+    @media only screen and (min-width: 800px) { @content; }
+  }
+  @else if $point == tabletlandscape {
+    @media only screen and (min-width: 1024px) { @content; }
+  }
+  @else if $point == landscapedesktop {
+    @media only screen and (min-width: 1058px) { @content; }
+  }
+  @else if $point == desktop {
+    @media only screen and (min-width: 1200px) { @content; }
+  }
+}
