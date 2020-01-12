@@ -1,5 +1,5 @@
 # EarBug Landing Page
-Landing page for earbug.com. Can eventually be the home of an early marketing site.
+Landing page for [earbug.com.](https://earbug.com) Can eventually be the home of an early marketing site.
 
 ### Install and setup
 We are using [Jekyll](https://jekyllrb.com/) which conveniently very friendly with github pages. Publishing this website is a simple push to the master branch.  Which branch to deploy from can be modified from the settings page of this repo.
