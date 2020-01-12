@@ -6,11 +6,12 @@ We are using [Jekyll](https://jekyllrb.com/) which conveniently very friendly wi
 
 Installation instructions:
 
-*requirements
+*requirements*
 - Ruby version 2.4.0 or above. 
 - RubyGems
 - GCC and Make
 
+*install and run*
 1. Install Jekyll and bundler gems
 > gem install jekyll bundler
 2. Clone this repo.
