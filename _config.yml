@@ -3,3 +3,5 @@ email: steve@earbug.com
 
 sass:
   sass_dir: _sass
+
+include: [".well-known"]
