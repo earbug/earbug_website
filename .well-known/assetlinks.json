@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.earbug.android",
+      "sha256_cert_fingerprints": [
+        "32:2E:4F:16:F0:00:B3:70:69:B5:BE:71:BF:CC:F1:91:8D:FD:1E:D3:66:1B:B0:52:3E:9C:08:EF:31:11:47:F5",
+        "DC:31:80:D0:D6:84:B9:65:66:DA:0A:6D:B9:B0:F9:F1:7F:20:4B:6A:B7:AF:2B:6D:FE:DE:E0:81:FA:2F:5F:02"
+      ]
+    }
+  }
+]
