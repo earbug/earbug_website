@@ -1,0 +1,20 @@
+# OS junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env / secrets
+.env
+.env.*
+
+# Amplify local artifacts (if `amplify` CLI is ever used locally)
+.amplify/
+amplify/.config/local-*
