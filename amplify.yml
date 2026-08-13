@@ -11,6 +11,7 @@ frontend:
       - 'index.html'
       - 'css/**/*'
       - 'js/**/*'
+      - 'issue-screenshots/**/*'
       - 'pages/**/*'
       - 'assets/**/*'
   cache:
