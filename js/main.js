@@ -19,9 +19,12 @@
       document.body.style.overflow = isOpen ? "hidden" : "";
     });
 
-    // Close mobile nav when a plain link is clicked
+    // Close mobile nav when a plain link is clicked (but not submenu
+    // triggers like About/Features/Platforms — those only toggle their
+    // submenu open/closed; see the dropdown handler below).
     primaryNav.querySelectorAll("a.nav-link").forEach(function (link) {
       link.addEventListener("click", function () {
+        if (link.closest(".has-submenu")) return;
         primaryNav.classList.remove("is-open");
         navToggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
