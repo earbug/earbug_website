@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earbug — Human Connections for Streaming Music</title>
+  <meta name="description" content="Earbug is the best companion app for Apple Music, YouTube Music, and Spotify — building human connections in the streaming world through jukeboxes, playlists, articles, and merch.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/earbug-icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16.png">
+  <link rel="alternate icon" href="assets/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=2">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Earbug home">
+        <img src="assets/logo/EarBug-Logo-Blue.svg" alt="Earbug" width="36" height="36">
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" data-primary-nav aria-label="Primary">
+        <ul class="nav-list">
+          <li class="has-submenu" aria-expanded="false">
+            <a class="nav-link" href="pages/mission.html" aria-haspopup="true">
+              About
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <ul class="submenu">
+              <li><a href="pages/mission.html">Mission</a></li>
+              <li><a href="pages/corporate/team.html">Team</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu" aria-expanded="false">
+            <a class="nav-link" href="pages/features/jukebox.html" aria-haspopup="true">
+              Features
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <ul class="submenu">
+              <li><a href="pages/features/jukebox.html">Jukebox</a></li>
+              <li><a href="pages/features/playlist.html">Playlist</a></li>
+              <li><a href="pages/features/article.html">Article</a></li>
+              <li><a href="pages/features/merch.html">Merch</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu" aria-expanded="false">
+            <a class="nav-link" href="pages/platforms/apple-music.html" aria-haspopup="true">
+              Platforms
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <ul class="submenu">
+              <li><a href="pages/platforms/apple-music.html">Apple Music</a></li>
+              <li><a href="pages/platforms/youtube-music.html">YouTube Music</a></li>
+              <li><a href="pages/platforms/spotify.html">Spotify</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link" href="pages/blog.html">Blog</a></li>
+          <li class="nav-cta">
+            <a class="nav-link signin-link" href="https://member.earbug.com/">Sign In</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ BODY 1 — HERO ============ -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-copy">
+          <h1 class="tagline">Human Connections for Streaming Music</h1>
+          <p>
+            Earbug is the best companion app for Apple Music, YouTube Music, and Spotify.
+            While the streaming platforms are focused on catalog size and algorithms, we build
+            human connections in the streaming world, enabling music fans to have the natural
+            shared experiences that amplify the joy of music, regardless of which streaming
+            platform they use.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-hero-cta" type="button" data-open-app-modal>
+              Get Earbug App Now — It's Free!
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-video-glow" aria-hidden="true"></div>
+          <div class="hero-video-frame">
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              poster=""
+              aria-label="Earbug app preview video">
+              <source src="assets/video/homepage-hero-video-web.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#jukebox" aria-label="Scroll to learn about Earbug features">
+        Discover more
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </a>
+    </section>
+
+    <!-- ============ BODY 2 — JUKEBOX ============ -->
+    <section class="feature-section" id="jukebox">
+      <div class="container">
+        <div class="feature-copy reveal">
+          <span class="feature-eyebrow">Earbug Feature</span>
+          <h2>Jukebox</h2>
+          <p>Earbug's jukebox feature lets fans add songs to a jukebox queue, while listening and chatting together.</p>
+          <p>Use local jukeboxes for parties, car trips, and other events when everyone is one place, or remote jukeboxes when you're all in different places.</p>
+          <p>Use private jukeboxes for family and friend groups, or public jukeboxes to play and discover songs with others who share your interests in particular artists or genres.</p>
+          <p class="feature-cta"><a class="btn btn-feature" href="pages/features/jukebox.html">Learn More</a></p>
+        </div>
+        <div class="feature-media reveal reveal-delay-1">
+          <img src="assets/images/jukebox-roadtrip.jpg" alt="Friends on a road trip sharing music together through an Earbug jukebox session" width="1600" height="1200" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BODY 3 — PLAYLIST ============ -->
+    <section class="feature-section reverse" id="playlist">
+      <div class="container">
+        <div class="feature-copy reveal">
+          <span class="feature-eyebrow">Earbug Feature</span>
+          <h2>Playlist</h2>
+          <p>Earbug's playlist feature makes playlist sharing easy and friction-free.</p>
+          <p>Share your playlists with friends, who can view and play them on their own streaming service, without worrying about which one they use.</p>
+          <p>Get great playlists from music fans across the streaming platforms delivered to you, matched based on your favorite artists and genres.</p>
+          <p>Subscribe to playlists you like, and get notifications when new songs are added to discover more great music effortlessly.</p>
+          <p class="feature-cta"><a class="btn btn-feature" href="pages/features/playlist.html">Learn More</a></p>
+        </div>
+        <div class="feature-media reveal reveal-delay-1">
+          <img src="assets/images/playlist-transfer.jpg" alt="Two friends each enjoying a shared Earbug playlist on their own preferred streaming app" width="1600" height="1200" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BODY 4 — ARTICLE ============ -->
+    <section class="feature-section" id="article">
+      <div class="container">
+        <div class="feature-copy reveal">
+          <span class="feature-eyebrow">Earbug Feature</span>
+          <h2>Article</h2>
+          <p>Earbug's article feature finds fresh news articles about your favorite artists and serves these up to you alongside playlists, jukeboxes, and other great music content and experiences.</p>
+          <p class="feature-cta"><a class="btn btn-feature" href="pages/features/article.html">Learn More</a></p>
+        </div>
+        <div class="feature-media reveal reveal-delay-1">
+          <img src="assets/images/article-delivered.jpg" alt="A music fan surrounded by floating logos of music publications whose articles Earbug delivers" width="1600" height="1200" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BODY 5 — MERCH ============ -->
+    <section class="feature-section reverse" id="merch">
+      <div class="container">
+        <div class="feature-copy reveal">
+          <span class="feature-eyebrow">Earbug Feature</span>
+          <h2>Merch</h2>
+          <p>Earbug's merch feature finds unique merch for your favorite artists, like stickers, t-shirts, and mugs, and serves these up to you alongside playlists, jukeboxes, and other great music content and experiences.</p>
+          <p class="feature-cta"><a class="btn btn-feature" href="pages/features/merch.html">Learn More</a></p>
+        </div>
+        <div class="feature-media reveal reveal-delay-1">
+          <img src="assets/images/merch-madness.jpg" alt="A music fan wearing and using Earbug artist merch, including a t-shirt, stickers, and a mug" width="1600" height="1200" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-copyright">© <span data-current-year>2026</span> Earbug. All rights reserved.</p>
+
+      <ul class="footer-links">
+        <li><a href="pages/corporate/contact.html">contact</a></li>
+        <li><a href="pages/corporate/privacy.html">privacy</a></li>
+        <li><a href="pages/corporate/terms.html">terms</a></li>
+      </ul>
+
+      <div class="footer-social">
+        <a class="social-link" href="https://www.youtube.com/@earbug" aria-label="Follow on YouTube" target="_blank" rel="noopener">
+          <span class="tooltip" aria-hidden="true">Follow on YouTube</span>
+          <img src="assets/icons/youtube.svg" alt="" width="17" height="17">
+        </a>
+        <a class="social-link" href="https://www.instagram.com/earbug/%20" aria-label="Follow on Instagram" target="_blank" rel="noopener">
+          <span class="tooltip" aria-hidden="true">Follow on Instagram</span>
+          <img src="assets/icons/instagram.svg" alt="" width="17" height="17">
+        </a>
+        <a class="social-link" href="https://www.tiktok.com/@earbug" aria-label="Follow on TikTok" target="_blank" rel="noopener">
+          <span class="tooltip" aria-hidden="true">Follow on TikTok</span>
+          <img src="assets/icons/tiktok.svg" alt="" width="17" height="17">
+        </a>
+        <a class="social-link" href="https://www.facebook.com/profile.php?id=100083307649865" aria-label="Follow on Facebook" target="_blank" rel="noopener">
+          <span class="tooltip" aria-hidden="true">Follow on Facebook</span>
+          <img src="assets/icons/facebook.svg" alt="" width="17" height="17">
+        </a>
+        <a class="social-link" href="https://x.com/earbug" aria-label="Follow on X" target="_blank" rel="noopener">
+          <span class="tooltip" aria-hidden="true">Follow on X</span>
+          <img src="assets/icons/x.svg" alt="" width="17" height="17">
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/company/earbug-inc/?viewAsMember=true" aria-label="Follow on LinkedIn" target="_blank" rel="noopener">
+          <span class="tooltip" aria-hidden="true">Follow on LinkedIn</span>
+          <img src="assets/icons/linkedin.svg" alt="" width="17" height="17">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ "GET THE APP" MODAL ============ -->
+  <div class="modal-overlay" data-app-modal aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Get the Earbug app">
+      <button class="modal-close" type="button" data-close-app-modal aria-label="Close dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <p>Choose your streaming service, then tap a button to get our Android or iOS app. It's free to use!</p>
+
+      <div class="platform-toggle" role="tablist" aria-label="Choose your streaming platform">
+        <button type="button" class="is-active" role="tab" aria-selected="true" data-platform-toggle="apple-music">Apple Music</button>
+        <button type="button" role="tab" aria-selected="false" data-platform-toggle="youtube-music">YouTube Music</button>
+        <button type="button" role="tab" aria-selected="false" data-platform-toggle="spotify">Spotify</button>
+      </div>
+
+      <!-- Earbug for Apple Music -->
+      <div data-store-section="apple-music">
+        <div class="store-section">
+          <h3>Earbug for Apple Music (Android)</h3>
+          <div class="store-badges">
+            <a class="store-badge" href="https://earbugapplinkhere.com">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+              <span class="badge-text"><small>GET IT ON</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+        <div class="store-section">
+          <h3>Earbug for Apple Music (iOS)</h3>
+          <div class="store-badges">
+            <a class="store-badge" href="https://earbugapplinkhere.com">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.652.95 3.559.95.865 0 2.21-1.01 3.84-1.01.62 0 2.876.06 4.353 2.19-.111.07-2.598 1.52-2.598 4.46 0 3.51 3.074 4.74 3.292 4.81z"></path></svg>
+              <span class="badge-text"><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+            <!-- Earbug for YouTube Music -->
+      <div data-store-section="youtube-music" hidden>
+        <div class="notify-panel" data-notify-panel="youtube">
+          <div class="notify-intro" data-notify-intro>
+            <p>Our YouTube Music app is a few weeks away from availability. If you would like to be notified when it is ready for download, please tap the button below to input your email address, and we will notify you when it's here!</p>
+            <button class="btn btn-primary" type="button" data-notify-start>Please Notify Me</button>
+          </div>
+          <form class="notify-form" data-notify-form hidden>
+            <label class="visually-hidden" for="notify-email-youtube">Email address</label>
+            <input class="notify-email-input" type="email" id="notify-email-youtube" placeholder="enter email" autocomplete="email" required>
+            <input class="notify-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-primary notify-submit" type="submit">Submit</button>
+          </form>
+          <p class="notify-message" data-notify-message hidden></p>
+        </div>
+      </div>
+
+            <!-- Earbug for Spotify -->
+      <div data-store-section="spotify" hidden>
+        <div class="notify-panel" data-notify-panel="spotify">
+          <div class="notify-intro" data-notify-intro>
+            <p>Our Spotify app is ready to go, but Spotify requires that we have 250,000 monthly active users to review it. If you would like to be notified when it is ready for download, please tap the button below to input your email address, and we will notify you when it's here!</p>
+            <button class="btn btn-primary" type="button" data-notify-start>Please Notify Me</button>
+          </div>
+          <form class="notify-form" data-notify-form hidden>
+            <label class="visually-hidden" for="notify-email-spotify">Email address</label>
+            <input class="notify-email-input" type="email" id="notify-email-spotify" placeholder="enter email" autocomplete="email" required>
+            <input class="notify-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-primary notify-submit" type="submit">Submit</button>
+          </form>
+          <p class="notify-message" data-notify-message hidden></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>

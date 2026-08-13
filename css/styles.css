@@ -1,0 +1,1195 @@
+/* =========================================================
+   Earbug Marketing Site — Base Stylesheet
+   Brand: Human Connections for Streaming Music
+   ========================================================= */
+
+/* ---- Design tokens ------------------------------------- */
+:root {
+  --color-primary: #19A1FB;       /* Earbug brand blue */
+  --color-primary-dark: #0d8fe6;
+  --color-accent-green: #10B981;  /* Jukebox / Spotify pairing */
+  --color-accent-red: #EF4444;    /* YouTube Music energy */
+  --color-accent-amber: #FBBF24;  /* Warm joy accent */
+  --color-dark: #111827;          /* Near-black background */
+  --color-dark-raised: #1A2333;   /* Slightly lighter panel surface */
+  --color-light: #F9FAFB;         /* Crisp off-white text/background */
+  --color-muted: #9CA3AF;         /* Secondary text on dark */
+
+  --font-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+
+  --container-max: 1180px;
+  --header-height: 76px;
+
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Reset / base --------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  line-height: 1.6;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video { max-width: 100%; display: block; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover, a:focus-visible { color: var(--color-primary-dark); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-base);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; color: var(--color-muted); }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+button { font-family: inherit; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  z-index: 1000;
+  transition: top var(--transition-fast);
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---- Buttons -------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+}
+.btn:hover, .btn:focus-visible { transform: translateY(-2px); }
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 8px 24px -8px rgba(25, 161, 251, 0.65);
+}
+.btn-primary:hover, .btn-primary:focus-visible {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  box-shadow: 0 12px 32px -8px rgba(25, 161, 251, 0.8);
+}
+
+/* The hero CTA is the single most important action on the page, so it gets
+   extra size, weight, and a soft glow to help it stand out against the
+   surrounding copy and video. */
+.btn-hero-cta {
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 1.15rem 2.5rem;
+  box-shadow: 0 0 0 1px rgba(25, 161, 251, 0.4), 0 0 36px 6px rgba(25, 161, 251, 0.55), 0 14px 32px -10px rgba(25, 161, 251, 0.7);
+}
+.btn-hero-cta:hover, .btn-hero-cta:focus-visible {
+  box-shadow: 0 0 0 1px rgba(25, 161, 251, 0.55), 0 0 44px 10px rgba(25, 161, 251, 0.7), 0 18px 38px -10px rgba(25, 161, 251, 0.85);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn-hero-cta {
+    animation: cta-pulse 3.2s ease-in-out infinite;
+  }
+}
+@keyframes cta-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(25, 161, 251, 0.4), 0 0 36px 6px rgba(25, 161, 251, 0.55), 0 14px 32px -10px rgba(25, 161, 251, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(25, 161, 251, 0.5), 0 0 50px 12px rgba(25, 161, 251, 0.7), 0 14px 32px -10px rgba(25, 161, 251, 0.7);
+  }
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-light);
+  border-color: rgba(249, 250, 251, 0.3);
+}
+.btn-ghost:hover, .btn-ghost:focus-visible {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   Header / Navigation
+   ========================================================= */
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 500;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+/* The translucent blur backdrop lives on a pseudo-element rather than on
+   .site-header itself. A `backdrop-filter` (or `filter`) on an ancestor
+   establishes the *containing block* for any `position: fixed` descendants
+   (e.g. the mobile nav panel), which would otherwise size itself relative
+   to the 76px-tall header instead of the viewport. Isolating the blur here
+   keeps .site-header filter-free so fixed children size against the
+   viewport as expected. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.brand img {
+  height: 36px;
+  width: auto;
+}
+.brand-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-light);
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: var(--color-light);
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+}
+.nav-toggle:hover { color: var(--color-primary); }
+.nav-toggle svg { width: 28px; height: 28px; }
+
+.primary-nav {
+  display: flex;
+}
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.nav-list > li { position: relative; }
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-pill);
+  color: var(--color-light);
+  font-weight: 500;
+  font-size: 0.97rem;
+}
+.nav-link:hover, .nav-link:focus-visible {
+  color: var(--color-primary);
+  background-color: rgba(25, 161, 251, 0.1);
+}
+.nav-link .chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-fast);
+}
+.has-submenu[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+.nav-cta {
+  margin-inline-start: 0.5rem;
+}
+
+/* Sign In is a plain text link rather than a button — it's a secondary
+   action and shouldn't visually compete with the primary CTA. */
+.signin-link {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.signin-link:hover, .signin-link:focus-visible {
+  color: var(--color-primary);
+  background-color: rgba(25, 161, 251, 0.1);
+  text-decoration: underline;
+}
+
+/* Dropdown submenus */
+.submenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 200px;
+  background: var(--color-dark-raised);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+  z-index: 50;
+}
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu,
+.has-submenu[aria-expanded="true"] .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.submenu a {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  color: var(--color-light);
+  font-size: 0.95rem;
+}
+.submenu a:hover, .submenu a:focus-visible {
+  background-color: rgba(25, 161, 251, 0.12);
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   Hero / Body 1
+   ========================================================= */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block-start: var(--header-height);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 50% at 80% 12%, rgba(25, 161, 251, 0.16), transparent 60%),
+    radial-gradient(45% 40% at 12% 88%, rgba(16, 185, 129, 0.12), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: center;
+  width: 100%;
+}
+
+.tagline {
+  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+  letter-spacing: -0.02em;
+  background: linear-gradient(100deg, #ffffff 30%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-copy p {
+  font-size: 1.08rem;
+  max-width: 50ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.hero-media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.hero-video-frame {
+  position: relative;
+  width: min(440px, 100%);
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255,255,255,0.06);
+}
+.hero-video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+.hero-video-glow {
+  position: absolute;
+  inset: -18%;
+  background: conic-gradient(from 120deg, var(--color-primary), var(--color-accent-green), var(--color-accent-amber), var(--color-primary));
+  filter: blur(60px);
+  opacity: 0.35;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: clamp(1rem, 3vh, 2.25rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+.scroll-cue svg {
+  width: 20px;
+  height: 20px;
+  animation: bob 2.2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+/* =========================================================
+   Feature sections (Body 2-5)
+   ========================================================= */
+.feature-section {
+  padding-block: clamp(4rem, 10vh, 7rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.feature-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+.feature-section.reverse .container {
+  direction: rtl;
+}
+.feature-section.reverse .container > * {
+  direction: ltr;
+}
+
+.feature-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--feature-accent, var(--color-primary));
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.feature-section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+.feature-copy p {
+  font-size: 1.04rem;
+  max-width: 56ch;
+}
+.feature-copy p + p { margin-top: 0.9em; }
+
+.feature-cta { margin-top: 2.5rem; }
+
+/* Feature "Learn More" buttons use solid Earbug-blue fills (rather than the
+   outlined .btn-secondary style) so they sit comfortably against the dark
+   background without standing out as sharply as the hero CTA — and
+   deliberately carry no glow, unlike the hero button. */
+.btn-feature {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  padding: 0.55rem 1.5rem;
+  font-size: 0.92rem;
+}
+.btn-feature:hover, .btn-feature:focus-visible {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+.feature-media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 70px -24px rgba(0,0,0,0.6);
+}
+
+/* Section accent colors (used for eyebrow + glow accents) */
+#jukebox  { --feature-accent: var(--color-accent-green); }
+#playlist { --feature-accent: var(--color-primary); }
+#article  { --feature-accent: var(--color-accent-amber); }
+#merch    { --feature-accent: var(--color-accent-red); }
+
+/* =========================================================
+   Scroll-reveal animation
+   ========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-cue svg { animation: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* =========================================================
+   App download modal
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 11, 18, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+}
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--color-dark-raised);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  width: min(560px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  position: relative;
+  transform: translateY(24px) scale(0.98);
+  transition: transform var(--transition-base);
+}
+.modal-overlay.is-open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 0;
+  color: var(--color-muted);
+  padding: 0.4rem;
+  border-radius: 50%;
+  line-height: 0;
+}
+.modal-close:hover { color: var(--color-light); background: rgba(255,255,255,0.08); }
+.modal-close svg { width: 22px; height: 22px; }
+
+.modal > p { margin-bottom: 1.5rem; }
+
+.platform-toggle {
+  display: inline-flex;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem;
+  gap: 0.25rem;
+  margin-bottom: 1.75rem;
+  width: 100%;
+}
+.platform-toggle button {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.platform-toggle button.is-active {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+.platform-toggle button:hover:not(.is-active) {
+  color: var(--color-light);
+}
+
+.store-section + .store-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.store-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-light);
+  margin-bottom: 0.85rem;
+}
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #000;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0.7rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.85rem;
+  box-shadow: 0 0 14px 1px rgba(255, 255, 255, 0.22);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.store-badge:hover, .store-badge:focus-visible {
+  transform: translateY(-2px);
+  border-color: #ffffff;
+  color: #fff;
+  box-shadow: 0 0 22px 4px rgba(255, 255, 255, 0.4);
+}
+.store-badge svg { width: 24px; height: 24px; flex-shrink: 0; }
+.store-badge .badge-text { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+.store-badge .badge-text small { font-size: 0.7rem; color: var(--color-muted); }
+.store-badge .badge-text strong { font-size: 0.95rem; }
+
+/* =========================================================
+   "Notify me" waitlist panel (used in the app modal for
+   platforms whose app isn't available yet)
+   ========================================================= */
+.notify-panel {
+  padding-block: 0.25rem 0.5rem;
+}
+.notify-intro p {
+  margin-bottom: 1.25rem;
+}
+.notify-form {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+.notify-form[hidden] { display: none; }
+.notify-email-input {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.1rem;
+  color: var(--color-light);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+.notify-email-input::placeholder { color: var(--color-muted); }
+.notify-email-input:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+.notify-submit { white-space: nowrap; }
+.notify-message {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: var(--color-accent-green);
+  font-size: 0.92rem;
+}
+.notify-message.is-error { color: var(--color-accent-red); }
+
+/* Honeypot field: present in the DOM for bots to fill in, invisible and
+   unreachable for sighted users and screen readers alike. */
+.notify-honeypot {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .notify-form { flex-direction: column; }
+}
+
+/* =========================================================
+   Team photo grid (Team page)
+   ========================================================= */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+  margin-top: 3rem;
+  max-width: 760px;
+}
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.team-photo {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.team-name {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: var(--color-light);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+@media (max-width: 640px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); max-width: 420px; }
+}
+@media (max-width: 420px) {
+  .team-grid { grid-template-columns: 1fr; max-width: 260px; }
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-block: 1.75rem;
+  background-color: var(--color-dark);
+}
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.footer-copyright {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin: 0;
+  white-space: nowrap;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin: 0 auto;
+}
+.footer-links li:not(:last-child)::after {
+  content: "|";
+  margin-inline-start: 0.5rem;
+  color: rgba(255,255,255,0.18);
+}
+.footer-links a {
+  color: var(--color-muted);
+  text-transform: lowercase;
+}
+.footer-links a:hover, .footer-links a:focus-visible { color: var(--color-primary); }
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.social-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+.social-link svg { width: 17px; height: 17px; }
+.social-link:hover, .social-link:focus-visible {
+  background: rgba(25, 161, 251, 0.16);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Tooltip on hover/focus */
+.social-link .tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--color-dark-raised);
+  color: var(--color-light);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+  pointer-events: none;
+}
+.social-link:hover .tooltip,
+.social-link:focus-visible .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* =========================================================
+   Anchor-link scroll offset
+   Compensates for the fixed header so anchor targets aren't
+   hidden underneath it when navigating via #fragment URLs.
+   ========================================================= */
+[id] {
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+
+/* =========================================================
+   Long-form content pages (Terms, Privacy, Cookies, etc.)
+   ========================================================= */
+.terms-of-service h2 {
+  font-size: 1.2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.6rem;
+  color: var(--color-light);
+}
+.terms-of-service h3 {
+  font-size: 1.03rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-light);
+  padding-left: 1rem;
+  border-left: 2px solid rgba(25, 161, 251, 0.35);
+}
+.terms-of-service h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: italic;
+  margin-top: 1.25rem;
+  margin-bottom: 0.35rem;
+  color: var(--color-light);
+  padding-left: 1rem;
+  border-left: 2px solid rgba(25, 161, 251, 0.35);
+}
+.terms-of-service p,
+.terms-of-service li {
+  font-size: 0.97rem;
+  line-height: 1.75;
+  max-width: 80ch;
+}
+.terms-of-service p { margin-bottom: 1em; }
+.terms-of-service p.section-intro { margin-bottom: 1em; }
+.terms-of-service ul {
+  list-style: disc;
+  padding-left: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.terms-of-service li { margin-bottom: 0.5em; }
+.terms-of-service a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.terms-of-service a:hover { color: var(--color-primary-dark); }
+
+/* =========================================================
+   Generic stub-page layout (used by interior pages)
+   ========================================================= */
+.page-hero {
+  padding-block: clamp(6rem, 16vh, 9rem) clamp(1.5rem, 4vh, 2.5rem);
+}
+.page-hero h1 {
+  font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+}
+.page-hero .lede {
+  font-size: 1.1rem;
+  max-width: 60ch;
+}
+.page-content {
+  padding-block-end: clamp(4rem, 10vh, 6rem);
+}
+.page-content p { max-width: 70ch; }
+
+.page-with-image .container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 6vw, 4rem);
+  align-items: center;
+}
+.page-with-image img {
+  border-radius: var(--radius-lg);
+  width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   Responsive breakpoints
+   ========================================================= */
+@media (max-width: 980px) {
+  .hero .container,
+  .feature-section .container,
+  .feature-section.reverse .container,
+  .page-with-image .container {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+  /* On the stacked mobile layout the video moves above the copy. Give it
+     the same breathing room above (against the header) as the grid `gap`
+     already provides below it (against the tagline), so the spacing reads
+     as balanced rather than flush against the header bar. */
+  .hero-media { order: -1; margin-block-start: clamp(2rem, 6vw, 4.5rem); }
+  .feature-media { order: -1; }
+  .hero-video-frame { width: min(380px, 78vw); }
+
+  /* On narrow viewports the stacked hero content is often taller than the
+     viewport, so a "Discover more" cue pinned to the bottom of .hero (as it
+     is on desktop) can land on top of the CTA button instead of below it.
+     Switch the hero to a column layout and let the cue flow naturally after
+     the copy/button, with its own spacing — and give the section breathing
+     room at the bottom so the button doesn't butt against the next section. */
+  .hero {
+    flex-direction: column;
+    padding-block-end: clamp(2.5rem, 9vw, 4rem);
+  }
+  .scroll-cue {
+    position: static;
+    transform: none;
+    margin-block-start: clamp(2rem, 6vw, 3rem);
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+
+  .primary-nav {
+    position: fixed;
+    inset-block-start: var(--header-height);
+    inset-inline: 0;
+    bottom: 0;
+    background: var(--color-dark);
+    flex-direction: column;
+    padding: 1.25rem 1.5rem 2rem;
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    overflow-y: auto;
+  }
+  .primary-nav.is-open { transform: translateX(0); }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.25rem;
+  }
+  .nav-list > li { width: 100%; }
+  .nav-link { width: 100%; border-radius: 0.7rem; }
+  .nav-cta { margin-inline-start: 0; margin-top: 0.75rem; width: 100%; }
+
+  .submenu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    background: rgba(255,255,255,0.03);
+    margin: 0.25rem 0 0.5rem;
+    display: none;
+  }
+  .has-submenu[aria-expanded="true"] .submenu { display: block; }
+  .has-submenu:hover .submenu { transform: none; } /* disable hover-open on touch widths */
+}
+
+@media (max-width: 640px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; }
+  .footer-links { order: 3; width: 100%; justify-content: center; margin: 0; }
+  .site-footer .container { justify-content: center; text-align: center; }
+  .footer-copyright { width: 100%; text-align: center; }
+}
+
+/* =========================================================
+   Blog — post list (Blog page)
+   ========================================================= */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-dark-raised);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(25, 161, 251, 0.35);
+  box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.6);
+}
+
+.blog-card-image-link { display: block; }
+.blog-card-image-wrap {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, rgba(25, 161, 251, 0.18), rgba(16, 185, 129, 0.12));
+  overflow: hidden;
+}
+.blog-card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-card-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.blog-card-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+.blog-card-title a {
+  color: var(--color-light);
+}
+.blog-card-title a:hover,
+.blog-card-title a:focus-visible {
+  color: var(--color-primary);
+}
+
+.blog-card-excerpt {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.blog-state {
+  color: var(--color-muted);
+  font-size: 1rem;
+  padding-block: 2rem;
+  text-align: center;
+}
+.blog-state.is-error { color: var(--color-accent-red); }
+
+@media (max-width: 980px) {
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .blog-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   Blog — single post page
+   ========================================================= */
+.blog-post-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-meta {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.blog-post-title {
+  font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+  margin-bottom: 1.75rem;
+}
+
+.blog-post-hero-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: 2.5rem;
+}
+/* The site-wide `img { display: block }` reset otherwise overrides the
+   browser's native `[hidden]` behavior, so a hidden image with no src
+   (e.g. a post with no cover image) would still render as an empty box
+   sized by the aspect-ratio above. This restores the expected behavior. */
+.blog-post-hero-image[hidden] {
+  display: none;
+}
+
+.blog-post-body {
+  max-width: 72ch;
+}
+.blog-post-body p,
+.blog-post-body li {
+  font-size: 1.04rem;
+  line-height: 1.75;
+  max-width: 72ch;
+}
+.blog-post-body h2 {
+  font-size: 1.4rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--color-light);
+}
+.blog-post-body h3 {
+  font-size: 1.15rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-light);
+}
+.blog-post-body ul,
+.blog-post-body ol {
+  padding-left: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.blog-post-body ul { list-style: disc; }
+.blog-post-body ol { list-style: decimal; }
+.blog-post-body li { margin-bottom: 0.5em; }
+.blog-post-body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.blog-post-body a:hover { color: var(--color-primary-dark); }
+.blog-post-body blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 3px solid rgba(25, 161, 251, 0.4);
+  color: var(--color-light);
+  font-style: italic;
+}
+.blog-post-body img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-block: 1.5rem;
+}
